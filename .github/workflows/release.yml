@@ -10,8 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Person to greet'
-        default: 'World'
+        description: 'Are you sure about that? the dev-template is not ready to be published!'
+        options:
+          - Sim
         required: true
 
 
