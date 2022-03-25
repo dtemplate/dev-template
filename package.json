@@ -7,10 +7,26 @@
   "repository": "https://github.com/Theryston/dev-template.git",
   "author": "Theryston Santos <funktodo2@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/Theryston/dev-template",
   "files": [
     "dist/",
     "package.json",
     "README.md"
+  ],
+  "bugs": {
+    "url": "https://github.com/Theryston/dev-template/issues"
+  },
+  "bin": {
+    "dev-template": "./bin/cli",
+    "dt": "./bin/cli"
+  },
+  "keywords": [
+    "cli",
+    "template",
+    "file structure",
+    "project",
+    "dt",
+    "generate"
   ],
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
