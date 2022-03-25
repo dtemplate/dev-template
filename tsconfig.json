@@ -16,6 +16,5 @@
     "baseUrl": ".",
     "declaration": true
   },
-  "include": ["src/*", "./__test__/*"],
-  "exclude": ["./__test__/*"]
+  "include": ["src/*"]
 }
