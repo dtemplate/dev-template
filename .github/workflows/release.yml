@@ -1,9 +1,19 @@
 name: Release
 
+# dot'n auto publish in npm
+# on:
+#   push:
+#     branches:
+#       - master
+
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
+
 
 jobs:
   release:
