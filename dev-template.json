@@ -1,0 +1,8 @@
+[
+  {
+    "name": "node-api",
+    "version": "1.0.0",
+    "description": "Generate node api file structure and instal dependencies, with: typescript, express, eslint, babel",
+    "git_url": "https://github.com/Theryston/dt.node-api.git"
+  }
+]
