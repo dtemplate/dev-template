@@ -1,9 +1,9 @@
 import { ParseArgs } from './utils/ParseArgs';
-import { RequestTemplates } from './utils/RequestTemplates';
+import { GetTemplates } from './utils/GetTemplates';
 
 export const cli = async (rowArgs: string[]) => {
   const args = await ParseArgs(rowArgs);
-  const { templates } = await RequestTemplates();
+  const { templates } = await GetTemplates();
   console.log(templates);
   console.log(args);
 };
