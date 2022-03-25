@@ -7,10 +7,29 @@
   "repository": "https://github.com/Theryston/dev-template.git",
   "author": "Theryston Santos <funktodo2@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/Theryston/dev-template",
   "files": [
     "dist/",
     "package.json",
     "README.md"
+  ],
+  "bugs": {
+    "url": "https://github.com/Theryston/dev-template/issues"
+  },
+  "bin": {
+    "dev-template": "bin/dev-template",
+    "dt": "bin/dev-template"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cli",
+    "template",
+    "file structure",
+    "project",
+    "dt",
+    "generate"
   ],
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
@@ -26,16 +45,23 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
     "semantic-release": "^19.0.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "arg": "^5.0.1",
+    "axios": "^0.26.1",
+    "esm": "^3.2.25",
+    "inquirer": "^8.2.2"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "release": "yarn semantic-release"
+    "release": "yarn semantic-release",
+    "dev": "nodemon --watch \"src/\" --exec \"yarn build && yarn link && dt argv\" -e ts,js"
   },
   "config": {
     "commitizen": {

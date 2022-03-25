@@ -30,7 +30,7 @@ git checkout -b my-branch -t upstream/HEAD
 The vast majority of pull requests opened against the `Theryston/dev-template`
 repository includes changes to one or more of the following:
 
-- the JavaScript code contained in the `lib` directory
+- the JavaScript code contained in the `src` directory
 - the documentation in `README.md`
 - tests within the `__test__` directory.
 
