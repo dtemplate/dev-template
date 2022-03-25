@@ -11,6 +11,7 @@ on:
     inputs:
       name:
         description: 'Are you sure about that? the dev-template is not ready to be published!'
+        type: boolean
         options:
           - Sim
         required: true
