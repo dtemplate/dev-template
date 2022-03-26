@@ -1,5 +1,6 @@
 import execa from 'execa';
 import { RunFile } from './RunFile';
+import listr from 'listr';
 
 const detectPrefix = async (command: string) => {
   if (command.indexOf('file:') !== -1) {
@@ -32,8 +33,12 @@ export const HandlePrefix = async ({
         5,
         command.length,
       )}`;
-      await RunFile({ filePath, templateDirectory, rootDirectory });
-      return;
+      return {
+        title: `Running file: ${command.slice(5, command.length)}`,
+        task: async () => {
+          await RunFile({ filePath, templateDirectory, rootDirectory });
+        },
+      };
   }
 };
 
@@ -46,14 +51,27 @@ export const HandleCommands = async ({
   templateDirectory: string;
   rootDirectory?: string;
 }) => {
+  const tasksRow = [];
+
   for (const command of commands) {
     const { index: prefixIndex, prefix } = await detectPrefix(command);
     if (prefixIndex !== -1) {
-      await HandlePrefix({ command, templateDirectory, prefix, rootDirectory });
-      return;
+      tasksRow.push(
+        await HandlePrefix({
+          command,
+          templateDirectory,
+          prefix,
+          rootDirectory,
+        }),
+      );
+    } else {
+      tasksRow.push({
+        title: `Running command: ${command}`,
+        task: async () => {
+          await execa(command);
+        },
+      });
     }
-
-    await execa(command);
   }
-  return;
+  return new listr(tasksRow);
 };

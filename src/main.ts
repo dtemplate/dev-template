@@ -85,22 +85,30 @@ export const HandleTemplateFuncs = async ({
       enabled: () => templateDirectory !== undefined,
     },
     {
+      title: 'Creating output directory',
+      task: async () => {
+        rimraf.sync(`${process.cwd()}/output`);
+        fs.mkdirSync(`${process.cwd()}/output`);
+        process.chdir(`${process.cwd()}/output`);
+      },
+      enabled: () => rootDirectory !== undefined,
+    },
+    {
       title: 'Running template commands',
       task: async () => {
-        if (rootDirectory) {
-          rimraf.sync(`${process.cwd()}/output`);
-          fs.mkdirSync(`${process.cwd()}/output`);
-          process.chdir(`${process.cwd()}/output`);
-        }
-        await HandleCommands({
+        return await HandleCommands({
           commands: templateJsonDataFromRepository.run,
           templateDirectory: templateFilesDirectory,
           rootDirectory,
         });
-        if (rootDirectory) {
-          process.chdir(process.cwd());
-        }
       },
+    },
+    {
+      title: 'Going out output directory',
+      task: async () => {
+        process.chdir(process.cwd());
+      },
+      enabled: () => rootDirectory !== undefined,
     },
     {
       title: 'Deleting temp files and dependencies',
