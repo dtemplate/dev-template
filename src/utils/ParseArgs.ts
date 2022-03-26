@@ -4,6 +4,7 @@ export const ParseArgs = async (rowArgs: string[]) => {
   const args = arg(
     {
       '--template': String,
+      '--run': String,
     },
     {
       argv: rowArgs.slice(2),
@@ -11,5 +12,6 @@ export const ParseArgs = async (rowArgs: string[]) => {
   );
   return {
     template: args['--template'],
+    run: args['--run'],
   };
 };

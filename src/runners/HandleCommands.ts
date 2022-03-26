@@ -19,10 +19,12 @@ export const HandlePrefix = async ({
   command,
   templateDirectory,
   prefix,
+  rootDirectory,
 }: {
   command: string;
   templateDirectory: string;
   prefix: string;
+  rootDirectory?: string;
 }) => {
   switch (prefix) {
     case 'file:':
@@ -30,7 +32,7 @@ export const HandlePrefix = async ({
         5,
         command.length,
       )}`;
-      await RunFile({ filePath, templateDirectory });
+      await RunFile({ filePath, templateDirectory, rootDirectory });
       return;
   }
 };
@@ -38,14 +40,16 @@ export const HandlePrefix = async ({
 export const HandleCommands = async ({
   commands,
   templateDirectory,
+  rootDirectory,
 }: {
   commands: string[];
   templateDirectory: string;
+  rootDirectory?: string;
 }) => {
   for (const command of commands) {
     const { index: prefixIndex, prefix } = await detectPrefix(command);
     if (prefixIndex !== -1) {
-      await HandlePrefix({ command, templateDirectory, prefix });
+      await HandlePrefix({ command, templateDirectory, prefix, rootDirectory });
       return;
     }
 

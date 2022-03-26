@@ -5,21 +5,31 @@ import { SortTemplateByName } from './utils/SortTemplateByName';
 import { SearchTemplateByNameWithBinarySearch } from './utils/SearchTemplateByNameWithBinarySearch';
 import { GetTemplateDataFromDirectory } from './utils/GetTemplateDataFromDirectory';
 import { HandleCommands } from './runners/HandleCommands';
+import { InstallDependence } from './runners/InstallDependence';
+import { UninstallDependence } from './runners/UninstallDependence';
 import { DeleteDevTempleteFiles } from './utils/DeleteDevTempleteFiles';
 import listr from 'listr';
+import fs from 'fs';
+import rimraf from 'rimraf';
 
 const log = console.log;
 
-export const HandleTemplateFuncs = async (templateName: string) => {
-  if (!templateName) throw new Error(`Please use --template {template-name}`);
-
+export const HandleTemplateFuncs = async ({
+  templateName,
+  templateDirectory,
+  rootDirectory,
+}: {
+  templateName: string;
+  templateDirectory?: string;
+  rootDirectory?: string;
+}) => {
   let template;
-  let templateFilesDirectory;
   let templateJsonDataFromRepository;
+  let templateFilesDirectory = `${process.cwd()}/${templateDirectory}`;
 
   const tasks = new listr([
     {
-      title: 'Searching for templates',
+      title: 'Searching for template',
       task: async () => {
         let templates = await GetTemplates();
         templates = SortTemplateByName(templates);
@@ -28,16 +38,42 @@ export const HandleTemplateFuncs = async (templateName: string) => {
           templateName,
         );
       },
+      enabled: () => !templateDirectory,
     },
     {
       title: 'Installing template',
       task: async () => {
-        const { directory } = await CloneTemplateRepository({
-          git_url: template.git_url,
-          name: template.name,
-        });
-        templateFilesDirectory = directory;
+        return new listr([
+          {
+            title: 'Getting template files',
+            task: async () => {
+              const { directory } = await CloneTemplateRepository({
+                git_url: template.git_url,
+                name: template.name,
+              });
+              templateFilesDirectory = directory;
+            },
+          },
+          {
+            title: 'Getting template data',
+            task: async () => {
+              templateJsonDataFromRepository =
+                await GetTemplateDataFromDirectory({
+                  directory: templateFilesDirectory,
+                });
+            },
+          },
+          {
+            title: 'Installing template dependence',
+            task: async () => {
+              await InstallDependence({
+                templateDirectory: templateFilesDirectory,
+              });
+            },
+          },
+        ]);
       },
+      enabled: () => !templateDirectory,
     },
     {
       title: 'Getting template data',
@@ -46,28 +82,54 @@ export const HandleTemplateFuncs = async (templateName: string) => {
           directory: templateFilesDirectory,
         });
       },
+      enabled: () => templateDirectory !== undefined,
     },
     {
       title: 'Running template commands',
       task: async () => {
+        if (rootDirectory) {
+          rimraf.sync(`${process.cwd()}/output`);
+          fs.mkdirSync(`${process.cwd()}/output`);
+          process.chdir(`${process.cwd()}/output`);
+        }
         await HandleCommands({
           commands: templateJsonDataFromRepository.run,
           templateDirectory: templateFilesDirectory,
+          rootDirectory,
         });
+        if (rootDirectory) {
+          process.chdir(process.cwd());
+        }
       },
     },
     {
-      title: 'Deleting dev-template files',
+      title: 'Deleting temp files and dependencies',
       task: async () => {
-        await DeleteDevTempleteFiles();
+        return new listr([
+          {
+            title: 'Uninstalling template dependence',
+            task: async () => {
+              await UninstallDependence({
+                templateDirectory: templateFilesDirectory,
+              });
+            },
+          },
+          {
+            title: 'Deleting dev-template files',
+            task: async () => {
+              await DeleteDevTempleteFiles();
+            },
+          },
+        ]);
       },
+      enabled: () => !templateDirectory,
     },
   ]);
 
   tasks
     .run()
     .then(() => {
-      log(chalk.green(`\nTemplate ${templateName} run successfully`));
+      log(chalk.green(`\nTemplate run successfully`));
     })
     .catch(error => {
       log(chalk.red(error.message));
