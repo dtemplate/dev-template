@@ -56,3 +56,29 @@ span {
   font-size: 14px;
   color: #50555c !important;
 }
+
+@media screen and (max-width: 768px) {
+  .container__card-template {
+    width: calc(100% - 40px);
+  }
+
+  .card-template {
+    width: calc(100% - 20px);
+  }
+
+  .card-template__logo {
+    height: 80px;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  span {
+    font-size: 12px;
+  }
+}
