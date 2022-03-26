@@ -1,2 +1,2 @@
 # dev-template
-Fast folder structure builder for various languages and frameworks 🚀
+Fast folder structure builder 🚀
