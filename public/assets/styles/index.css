@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Fira Code';
+  src: url('./fonts/FIRACODE-REGULAR.ttf');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #242627;
+  font-family: 'Fira Code';
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.container__card-template {
+  width: calc(100% - 80px);
+  height: 100%;
+  padding: 50px 40px 0px 40px;
+}
+
+.card-template {
+  background: #fff;
+  width: calc(100% - 10px);
+  min-height: 100px;
+  margin-bottom: 50px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.card-template__logo {
+  height: 110px;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+span {
+  font-weight: 400;
+  font-size: 14px;
+  color: #50555c !important;
+}
