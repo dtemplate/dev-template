@@ -16,5 +16,17 @@
     "version": "1.0.0",
     "description": "Template for the dev-template that generates a node api that returns \"hello world 3\"",
     "git_url": "https://github.com/Theryston/dt.hello-world3.git"
+  },
+  {
+    "name": "hello-world-3",
+    "version": "1.0.0",
+    "description": "Template for the dev-template that generates a node api that returns \"hello world 3\"",
+    "git_url": "https://github.com/Theryston/dt.hello-world3.git"
+  },
+  {
+    "name": "hello-world-3",
+    "version": "1.0.0",
+    "description": "Template for the dev-template that generates a node api that returns \"hello world 3\"",
+    "git_url": "https://github.com/Theryston/dt.hello-world3.git"
   }
 ]
