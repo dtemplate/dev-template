@@ -124,4 +124,57 @@ export const main = async ({ rootDirectory, templateDirectory }) => {
 After that and after you have added the path to your generator in the `template.json` file in the `run` field using `file:` before the path, dt will execute the `main` function, you can run `yarn dev` to test and see all result in folder `output`. WARNING generators must be written in javascript.
 
 ## Publishing your template
-After your template is ready you can [upload it to github](https://docs.github.com/pt/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github) and add it to the dev template by following these steps:
+After your template is ready you can [upload it to github](https://docs.github.com/pt/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github) and add it to the dev template by following these step:
+
+[Fork](https://docs.github.com/pt/get-started/quickstart/fork-a-repo) the [dev template repository](https://github.com/dtemplate/dev-template) to your github profile.
+
+Clone your repository in your local machine
+```sh
+git clone https://github.com/{your-github-username}/dev-template.git
+```
+
+navigate inside your project
+
+```sh
+cd dev-template
+```
+
+Create a new branch with the prefix `add/` and the name of your template:
+
+```sh
+git checkout -b add/my-template-name
+```
+
+Open the folder in visual studio code or your favorite code editor. to open in visual studio code type in terminal:
+
+```sh
+code .
+```
+
+Open in your code editor the file `dev-template.json`. there you will have an array of objects similar to:
+
+```json
+[
+  {
+    "name": "hello-world", /* template name */
+    "version": "1.0.0", /* template current version */
+    "description": "Template for the dev-template that generates a node api that returns \"hello world\"", /* template description */
+    "git_url": "https://github.com/dtemplate/dt.hello-world.git" /* the url that you use to clone your template repository using git */
+  }
+]
+```
+
+Each of the objects is a template, add at the end of the file a new object with your template data. in name do not use special characters or space.
+
+upload the changes to your repository using [commitizen](https://github.com/commitizen/cz-cli):
+
+```sh
+git add .
+git commit # your commit have to be "feat: add {my template name}"
+git push --set-upstream origin add/{my-template-name}
+```
+
+Now open a pull request from your fork to branch master of [dev template repository](https://github.com/dtemplate/dev-template)
+
+## Footer
+Ready that's all! now your creativity is the limit you can create from a template that downloads dependencies and creates a folder structure to a template that creates a ready-made crud. you who know what you are going to do. Thank you so much for reading all the documentation! if you had a problem, you can open an issue as a bug report and we will help you.
