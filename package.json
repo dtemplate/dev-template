@@ -29,7 +29,8 @@
     "file structure",
     "project",
     "dt",
-    "generate"
+    "generate",
+    "dependencies"
   ],
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
