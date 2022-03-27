@@ -46,7 +46,7 @@ yarn dev
 
 ## How to use
 
-To get started you need to keep in mind one of the templates created by the community for the dev template, see the [list](https://theryston.github.io/dev-template/) if you don't know one by heart.
+To get started you need to keep in mind one of the templates created by the community for the dev template, see the [list](https://dtemplate.github.io/dev-template/) if you don't know one by heart.
 
 Now run follow the instructions in template documentation or only run:
 
@@ -54,11 +54,11 @@ Now run follow the instructions in template documentation or only run:
 dt --template {template-name}
 ```
 
-You can get the template name into the [list](https://theryston.github.io/dev-template/).
+You can get the template name into the [list](https://dtemplate.github.io/dev-template/).
 
 
-to see the template documentation click on template card in the [list](https://theryston.github.io/dev-template/)
+to see the template documentation click on template card in the [list](https://dtemplate.github.io/dev-template/)
 
 ## footer
 
-if you want to contribute to the project read the [terms of contribution](https://github.com/Theryston/dev-template/blob/master/CONTRIBUTING.md#developers-certificate-of-origin). if you want to create your own template for everyone to use read the [template documentation](https://github.com/Theryston/dev-template/blob/master/TEMPLATE-DOCUMENTATION.md)
+if you want to contribute to the project read the [terms of contribution](https://github.com/dtemplate/dev-template/blob/master/CONTRIBUTING.md#developers-certificate-of-origin). if you want to create your own template for everyone to use read the [template documentation](https://github.com/dtemplate/dev-template/blob/master/TEMPLATE-DOCUMENTATION.md)
