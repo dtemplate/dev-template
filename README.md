@@ -26,7 +26,7 @@ npm install -g dev-template
 
 ## Example
 
-Create and open a new empty folder and run our hello-world as an example. wait until the process finishes and run `yarn dev` after starting the server open your browser at http://localhost:3000 and see if it is showing "hello-world"
+Create and open a new empty folder and run our hello-world as an example. wait until the process finishes and run `yarn dev` after starting the server open your browser at http://localhost:3000 and see if it is showing "Hello World!"
 
 ```sh
 mkdir example-dt
