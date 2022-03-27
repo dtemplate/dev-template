@@ -2,7 +2,7 @@
   "name": "dev-template",
   "version": "1.0.0",
   "main": "dist/cli.js",
-  "description": "Fast folder structure builder 🚀",
+  "description": "Build your entire project with one command 🚀",
   "types": "dist/cli.d.ts",
   "repository": "https://github.com/Theryston/dev-template.git",
   "author": "Theryston Santos <funktodo2@gmail.com>",
