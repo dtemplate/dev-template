@@ -10,7 +10,7 @@ Fork the project [on GitHub](https://github.com/Theryston/dev-template) and clon
 
 ```text
 git clone https://github.com/{username}/dev-template.git
-cd node
+cd dev-template
 git remote add upstream https://github.com/Theryston/dev-template.git
 git fetch upstream
 ```
