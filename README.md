@@ -1,4 +1,4 @@
-[<img src="https://user-images.githubusercontent.com/72868196/160259554-8bc1897b-27ae-40ac-9c67-4659d6ca4762.jpg" style="width: 300px; height: 150px; object-fit: cover;" />](https://www.npmjs.com/package/dev-template)
+[<img src="https://user-images.githubusercontent.com/72868196/160262142-e35cff51-11e1-4c2b-877d-34a459267948.jpg" style="width: 300px; height: 150px; object-fit: cover;" />](https://www.npmjs.com/package/dev-template)
 
 ## Dev Template
 
@@ -54,9 +54,8 @@ Now run follow the instructions in template documentation or only run:
 dt --template {template-name}
 ```
 
-You can get the template name into the [list](https://theryston.github.io/dev-template/) it to be this text:
+You can get the template name into the [list](https://theryston.github.io/dev-template/).
 
-image here
 
 to see the template documentation click on template card in the [list](https://theryston.github.io/dev-template/)
 
