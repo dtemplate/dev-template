@@ -66,7 +66,9 @@ export const HandleCommands = async ({
       );
     } else {
       tasksRow.push({
-        title: `Running command: ${command}`,
+        title: `Running command: ${
+          command.length > 80 ? command.slice(0, 80) + '...' : command
+        }`,
         task: async () => {
           await execa(command);
         },
