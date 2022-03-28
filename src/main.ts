@@ -26,6 +26,7 @@ export const HandleTemplateFuncs = async ({
   let template;
   let templateJsonDataFromRepository;
   let templateFilesDirectory = `${process.cwd()}/${templateDirectory}`;
+  let successfullyMessages = ['Template run successfully'];
 
   const tasks = new listr([
     {
@@ -61,6 +62,10 @@ export const HandleTemplateFuncs = async ({
                 await GetTemplateDataFromDirectory({
                   directory: templateFilesDirectory,
                 });
+              if (templateJsonDataFromRepository.successfullyMessages) {
+                successfullyMessages =
+                  templateJsonDataFromRepository.successfullyMessages;
+              }
             },
           },
           {
@@ -81,6 +86,10 @@ export const HandleTemplateFuncs = async ({
         templateJsonDataFromRepository = await GetTemplateDataFromDirectory({
           directory: templateFilesDirectory,
         });
+        if (templateJsonDataFromRepository.successfullyMessages) {
+          successfullyMessages =
+            templateJsonDataFromRepository.successfullyMessages;
+        }
       },
       enabled: () => templateDirectory !== undefined,
     },
@@ -137,7 +146,10 @@ export const HandleTemplateFuncs = async ({
   tasks
     .run()
     .then(() => {
-      log(chalk.green(`\nTemplate run successfully`));
+      log('\n');
+      successfullyMessages.forEach(message => {
+        log(chalk.green(`${message}\n`));
+      });
     })
     .catch(error => {
       log(chalk.red(error.message));
