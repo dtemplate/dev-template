@@ -3,6 +3,7 @@ export interface ITemplateInfo {
   version: string;
   description: string;
   run: string[];
+  successfullyMessages?: string[];
 }
 
 export interface ITemplateBasicInfo {
