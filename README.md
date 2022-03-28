@@ -37,7 +37,7 @@ cd example-dt
 ```
 
 ```sh
-dt --template mvc
+dt --template hello-world
 ```
 
 ```sh
