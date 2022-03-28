@@ -1,4 +1,4 @@
-[<img src="https://user-images.githubusercontent.com/72868196/160262142-e35cff51-11e1-4c2b-877d-34a459267948.jpg" style="width: 300px; height: 150px; object-fit: cover;" />](https://www.npmjs.com/package/dev-template)
+[<img src="https://user-images.githubusercontent.com/72868196/160446275-1c6983f9-284a-4067-b28f-da4f80be3a37.jpg" style="width: 300px; height: 150px; object-fit: cover;" />](https://www.npmjs.com/package/dev-template)
 
 ## Dev Template
 
