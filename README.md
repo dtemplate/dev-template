@@ -3,7 +3,7 @@
 ## Dev Template
 
 ```sh
-dt --template hello-world
+dt --template mvc
 ```
 
 No more installing and configuring all basic dependencies manually every time you start a new project. the [dev template](https://www.npmjs.com/package/dev-template) can install and configure everything with a single command. A CLI that runs templates with a sequence of commands to launch your projects. Anyone (including you) can create a template that will install and run the commands needed to start your projects.
@@ -37,7 +37,7 @@ cd example-dt
 ```
 
 ```sh
-dt --template hello-world
+dt --template mvc
 ```
 
 ```sh
