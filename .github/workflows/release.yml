@@ -1,21 +1,9 @@
 name: Release
 
-# dot'n auto publish in npm
-# on:
-#   push:
-#     branches:
-#       - master
-
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Are you sure about that? the dev-template is not ready to be published!'
-        type: boolean
-        options:
-          - Sim
-        required: true
-
+  push:
+    branches:
+      - master
 
 jobs:
   release:
