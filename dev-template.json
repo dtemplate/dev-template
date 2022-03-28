@@ -1,5 +1,11 @@
 [
   {
+    "name": "mvc",
+    "version": "1.0.0",
+    "description": "Generate a nodejs api using the mvc folder structure as a base",
+    "git_url": "https://github.com/dtemplate/dt.mvc.git"
+  },
+  {
     "name": "hello-world",
     "version": "1.0.0",
     "description": "Template for the dev-template that generates a node api that returns \"hello world\"",
