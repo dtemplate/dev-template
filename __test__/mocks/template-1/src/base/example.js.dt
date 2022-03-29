@@ -1,0 +1,7 @@
+console.log(`
+Generated successfully!
+\n
+Please customize your template.
+\n
+If you don't know how templates work. Please check: https://github.com/dtemplate/dev-template/blob/master/TEMPLATE-DOCUMENTATION.md.
+`);

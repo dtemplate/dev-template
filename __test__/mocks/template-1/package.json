@@ -1,0 +1,12 @@
+{
+  "name": "template-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "dev": "nodemon --watch src --exec dt --run ."
+  }
+}

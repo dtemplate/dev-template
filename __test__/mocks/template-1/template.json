@@ -1,0 +1,9 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "Write here a description for your template",
+  "run": [
+    "yarn init -y",
+    "file:/src/generators/example.js"
+  ]
+}
