@@ -4,10 +4,10 @@
   "main": "dist/cli.js",
   "description": "Build your entire project with one command 🚀",
   "types": "dist/cli.d.ts",
-  "repository": "https://github.com/Theryston/dev-template.git",
+  "repository": "https://github.com/dtemplate/dev-template.git",
   "author": "Theryston Santos <funktodo2@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/Theryston/dev-template",
+  "homepage": "https://github.com/dtemplate/dev-template",
   "files": [
     "dist/",
     "package.json",
