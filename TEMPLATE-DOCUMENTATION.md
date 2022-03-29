@@ -1,13 +1,17 @@
 # How does the CLI work?
+
 Basically the dt (dev template) is a cli that runs scripts and commands predefined by a person, these commands are added in a “template” which is in turn added to the dt and it runs the commands and scripts from the template. In this documentation you will learn how to add a template to dt for everyone to use.
 
 # Docs
+
 Here is documented everything you need to know about templates, from currently accepted settings through file structure to how to add it to dt.
 
 ## Basic dependencies
+
 To get started you need to have [installed the dev template command line tool](https://github.com/dtemplate/dev-template#installing-the-command-line-tool) to be able to run and generate your new template.
 
 ## Generating your template
+
 Para começar crie uma pasta com o nome do seu template, acesse a pasta através da linha de comando e digite o seguinte comando:
 
 ```sh
@@ -73,15 +77,16 @@ The `template.json` file is the most important file in your template where it co
 The `yarn.lock` file contains internal data that [yarn](https://yarnpkg.com) uses. Just ignore that file.
 
 ### template.json
+
 This is the file that dt will read and contains all your template data. See its data structure below:
 
 ```json
 {
-  "name": "hello-world", /* your template name */
-  "version": "1.0.0", /* your template current version */
-  "description": "Write here a description for your template", /* here describe your template */
-  "run": [ /* all commands that will be run */
-    "yarn init -y",
+  "name": "hello-world" /* your template name */,
+  "version": "1.0.0" /* your template current version */,
+  "description": "Write here a description for your template" /* here describe your template */,
+  "run": [
+    /* all commands that will be run */ "yarn init -y",
     "file:/src/generators/example.js"
   ]
 }
@@ -92,28 +97,28 @@ Inside this file there are several properties as you can see above, but all are 
 If you're a good observer for sure you've seen something strange `"file:/src/generators/example.js"` basically it's the prefixes, you can pass a prefix that will make dt behave differently when executing that command. example of the prefix `file:` it will execute the file from the directory you passed right in front of it. WARNING the file must be a [generator](#generators). currently the `file:` prefix is the only one developed.
 
 ### Generators
+
 Generators are the files in the `src/generators` directory. These files are used to generate files and handle files.
 
 To get started you need to export a function called `main` that takes two parameters `rootDirectory` (directory where the user ran `dt –template {my template name here}`) and `templateDirectory` (root directory of your template. where your template is running). example:
 
 ```js
 export const main = async ({ rootDirectory, templateDirectory }) => {
-// your code...
+  // your code...
 };
 ```
 
 To handle files just use [fs](https://nodejs.org/api/fs.html) to get your base files and save them in the directory wherever you want. example:
 
 ```js
-const fs = require("fs"); // importing the fs
+const fs = require('fs'); // importing the fs
 
 // declare the maisn function
 export const main = async ({ rootDirectory, templateDirectory }) => {
-
   // read the file on ./src/base/example.js.dt
   const exampleJsonFile = fs.readFileSync(
     `${templateDirectory}/src/base/example.js.dt`,
-    "utf-8"
+    'utf-8',
   );
 
   // write all data on file ./src/base/example.js.dt into a file ./example.js was run the command dt –template {my template name here}
@@ -124,11 +129,13 @@ export const main = async ({ rootDirectory, templateDirectory }) => {
 After that and after you have added the path to your generator in the `template.json` file in the `run` field using `file:` before the path, dt will execute the `main` function, you can run `yarn dev` to test and see all result in folder `output`. WARNING generators must be written in javascript.
 
 ## Publishing your template
+
 After your template is ready you can [upload it to github](https://docs.github.com/pt/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github) and add it to the dev template by following these step:
 
 [Fork](https://docs.github.com/pt/get-started/quickstart/fork-a-repo) the [dev template repository](https://github.com/dtemplate/dev-template) to your github profile.
 
 Clone your repository in your local machine
+
 ```sh
 git clone https://github.com/{your-github-username}/dev-template.git
 ```
@@ -156,9 +163,9 @@ Open in your code editor the file `dev-template.json`. there you will have an ar
 ```json
 [
   {
-    "name": "hello-world", /* template name */
-    "version": "1.0.0", /* template current version */
-    "description": "Template for the dev-template that generates a node api that returns \"hello world\"", /* template description */
+    "name": "hello-world" /* template name */,
+    "version": "1.0.0" /* template current version */,
+    "description": "Template for the dev-template that generates a node api that returns \"hello world\"" /* template description */,
     "git_url": "https://github.com/dtemplate/dt.hello-world.git" /* the url that you use to clone your template repository using git */
   }
 ]
@@ -176,5 +183,10 @@ git push --set-upstream origin add/{my-template-name}
 
 Now open a pull request from your fork to branch master of [dev template repository](https://github.com/dtemplate/dev-template)
 
+## examples
+
+if you want to see an example of a more basic template see the [hello-world](https://github.com/dtemplate/dt.hello-world) template but if you want to see a more advanced one see the [mvc template](https://github.com/dtemplate/dt.mvc)
+
 ## Footer
+
 Ready that's all! now your creativity is the limit you can create from a template that downloads dependencies and creates a folder structure to a template that creates a ready-made crud. you who know what you are going to do. Thank you so much for reading all the documentation! if you had a problem, you can open an issue as a bug report and we will help you.
